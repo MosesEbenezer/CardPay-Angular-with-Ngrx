@@ -1,0 +1,23 @@
+<mat-grid-list cols="2" rowHeight="2:1">
+  <mat-grid-tile>
+    <div class="example-button-row">
+      <button routerLink="/add" mat-raised-button color="accent">Add New</button>
+    </div>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <mat-card class="card" *ngFor="let cardDetail of cardDetails | async">
+      <mat-card-header>
+        <div mat-card-avatar class="header-image"></div>
+        <mat-card-title>{{ cardDetail.cardHolder }}</mat-card-title>
+        <mat-card-subtitle>{{ cardDetail.cardNumber }}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <p> Card Holder: {{ cardDetail.cardHolder }}</p>
+        <p> Card Number: {{ cardDetail.cardNumber }}</p>
+        <p> Expiration Date: {{ cardDetail.expirationDate }} </p>
+        <p> Security Code: {{ cardDetail.securityCode }} </p>
+        <p> Amount: {{ cardDetail.amount }} </p>
+      </mat-card-content>
+    </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>
