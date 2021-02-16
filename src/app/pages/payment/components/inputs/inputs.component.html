@@ -1,1 +1,33 @@
-<p>inputs works!</p>
+<mat-card class="center">
+
+  <label class="label">
+    Name:
+    <input class="input" type="text" [formControl]="cardHolder">
+  </label>
+  
+  <label class="label">
+    Number:
+    <input class="input" type="text" [formControl]="cardNumber">
+  </label>
+
+  <label class="label">
+    Amt:
+    <input class="input-2" type="text" [formControl]="amount">
+  </label>
+  
+  <label class="label">
+    Exp:
+    <input class="input-3" type="date" [formControl]="expirationDate">
+  </label>
+  
+  <label class="label">
+    Cvv:
+    <input class="input-4" type="text" [formControl]="securityCode">
+  </label>
+
+  
+  <div class="submit">
+    <button mat-raised-button color="accent">PAY</button>
+  </div>
+
+</mat-card>

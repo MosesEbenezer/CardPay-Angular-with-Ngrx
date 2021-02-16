@@ -1,0 +1,52 @@
+.center {
+  margin: 40px 30%
+}
+
+.input {
+  height: 15px;
+  width: 80%;
+  padding: 5px;
+  margin: 10px;
+  border-radius: 5px;
+  border: 1px solid lightgrey;
+}
+
+.label {
+  color: rgb(104, 84, 84);
+  font-size: small;
+}
+
+.input-2 {
+  height: 15px;
+  width: 25%;
+  padding: 5px;
+  margin: 10px;
+  border-radius: 5px;
+  border: 1px solid lightgrey;
+}
+
+.input-3 {
+  height: 15px;
+  width: 25%;
+  padding: 5px;
+  margin: 10px;
+  border-radius: 5px;
+  border: 1px solid lightgrey;
+}
+
+.input-4 {
+  height: 15px;
+  width: 10%;
+  padding: 5px;
+  margin: 10px;
+  border-radius: 5px;
+  border: 1px solid lightgrey;
+}
+
+.input:focus {
+  border: 1px solid lightgrey
+}
+
+.submit {
+  margin: 8% 45%;
+}
