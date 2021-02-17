@@ -5,28 +5,31 @@
     <label class="label-1">
       Name:
       <input class="input" type="text" formControlName="cardHolder">
-      <small class="text-danger">Card Holder's name is required</small>
+      <small *ngIf="cardHolder.invalid && cardHolder.touched" class="text-danger">Card Holder's name is required</small>
     </label>
     
     <label class="label-1">
       Number:
       <input class="input" type="text" formControlName="cardNumber">
-      <small class="text-danger">Card Number is required</small>
+      <small *ngIf="cardNumber.invalid && cardNumber.touched" class="text-danger">Card Number is required</small>
     </label>
   
     <label class="label">
       Amt:
       <input class="input-2" type="text" formControlName="amount">
+      <small *ngIf="amount.invalid && amount.touched" class="text-danger">Amount is required and must be a number</small>
     </label>
     
     <label class="label">
       Exp:
       <input class="input-3" type="date" formControlName="expirationDate">
+      <small *ngIf="expirationDate.invalid && expirationDate.touched" class="text-danger">Card Number is required</small> 
     </label>
     
     <label class="label">
       Cvv:
       <input class="input-4" type="text" formControlName="securityCode">
+      <small *ngIf="securityCode.invalid && securityCode.touched" class="text-danger">Security Code must be a number and not less than or more than 3 digits</small> 
     </label>
   
     

@@ -2,6 +2,14 @@
   margin: 40px 30%
 }
 
+/* .form-control.ng-touched.ng-invalid {
+  border: 1px solid red;
+}
+
+.form-control.ng-touched.ng-valid {
+  border: 1px solid green;
+} */
+
 .input {
   height: 15px;
   width: 80%;
