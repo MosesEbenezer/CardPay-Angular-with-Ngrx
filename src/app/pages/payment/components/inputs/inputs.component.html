@@ -1,33 +1,38 @@
 <mat-card class="center">
 
-  <label class="label">
-    Name:
-    <input class="input" type="text" [formControl]="cardHolder">
-  </label>
-  
-  <label class="label">
-    Number:
-    <input class="input" type="text" [formControl]="cardNumber">
-  </label>
+  <form [formGroup]="cardDetailsForm" (ngSubmit)="onSubmit()">
 
-  <label class="label">
-    Amt:
-    <input class="input-2" type="text" [formControl]="amount">
-  </label>
+    <label class="label-1">
+      Name:
+      <input class="input" type="text" formControlName="cardHolder">
+      <small class="text-danger">Card Holder's name is required</small>
+    </label>
+    
+    <label class="label-1">
+      Number:
+      <input class="input" type="text" formControlName="cardNumber">
+      <small class="text-danger">Card Number is required</small>
+    </label>
   
-  <label class="label">
-    Exp:
-    <input class="input-3" type="date" [formControl]="expirationDate">
-  </label>
+    <label class="label">
+      Amt:
+      <input class="input-2" type="text" formControlName="amount">
+    </label>
+    
+    <label class="label">
+      Exp:
+      <input class="input-3" type="date" formControlName="expirationDate">
+    </label>
+    
+    <label class="label">
+      Cvv:
+      <input class="input-4" type="text" formControlName="securityCode">
+    </label>
   
-  <label class="label">
-    Cvv:
-    <input class="input-4" type="text" [formControl]="securityCode">
-  </label>
-
-  
-  <div class="submit">
-    <button mat-raised-button color="accent">PAY</button>
-  </div>
+    
+    <div class="submit">
+      <button type="submit" [disabled]="!cardDetailsForm.valid" mat-raised-button color="accent">PAY</button>
+    </div>
+  </form>
 
 </mat-card>

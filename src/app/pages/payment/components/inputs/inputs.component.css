@@ -15,6 +15,18 @@
   color: rgb(104, 84, 84);
   font-size: small;
 }
+.label-1 {
+  color: rgb(104, 84, 84);
+  font-size: small;
+  display: block;
+}
+
+.text-danger {
+  float: right;
+  color: red;
+  padding-bottom: 10px;
+  margin-right: 10px;
+}
 
 .input-2 {
   height: 15px;

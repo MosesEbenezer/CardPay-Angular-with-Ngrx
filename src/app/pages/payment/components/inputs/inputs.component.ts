@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-inputs',
@@ -10,13 +10,23 @@ export class InputsComponent implements OnInit {
 
   constructor() { }
 
-  cardHolder = new FormControl('');
-  cardNumber = new FormControl('');
-  expirationDate = new FormControl('');
-  securityCode = new FormControl('');
-  amount = new FormControl('');
+  cardDetailsForm: FormGroup;
+
+  onSubmit() {
+    // TODO: Use EventEmitter with form value
+    console.warn(this.cardDetailsForm.value);
+  }
 
   ngOnInit(): void {
+    this.cardDetailsForm = new FormGroup({
+
+      'cardHolder': new FormControl(null, [Validators.required]),
+      'cardNumber': new FormControl(null, [Validators.required]),
+      'expirationDate': new FormControl(null, [Validators.required, Validators.pattern('for regex string here')]), // (mandatory, Date, >CurrentDate)
+      'securityCode': new FormControl(null, [Validators.minLength(3), Validators.maxLength(3)]),
+      'amount': new FormControl(null, [Validators.required, Validators.min(0)]),
+  
+    })
   }
 
 }
