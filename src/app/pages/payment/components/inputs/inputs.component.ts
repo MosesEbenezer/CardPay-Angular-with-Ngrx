@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { CardPayment } from 'src/app/models/card-payment.model';
 import { PaymentService } from '../../shared/services/payment.service';
-// import { CardPayment } from '../../../../models/card-payment.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-inputs',
@@ -11,7 +12,7 @@ import { PaymentService } from '../../shared/services/payment.service';
 })
 export class InputsComponent implements OnInit {
 
-  constructor(private paymentService: PaymentService, private toastr: ToastrService) { }
+  constructor(private paymentService: PaymentService, private toastr: ToastrService, private router: Router) { }
 
   cardDetailsForm: FormGroup;
 
@@ -48,15 +49,25 @@ export class InputsComponent implements OnInit {
   }
 
   onSubmit() {
-    this.paymentService.pay(this.cardDetailsForm.value)
-    .subscribe(
-      data => this.toastr.success(data, 'Success!'),
-      // console.log('Success!', data),
-      error => this.toastr.error(error, 'Error')
-      // console.error('Error!', error)
-    )
-    this.cardDetailsForm.reset()
 
+    if(!this.cardDetailsForm.valid) {
+      return
+    }
+
+    const cardDetails: CardPayment = this.cardDetailsForm.value
+    
+    const response = this.paymentService.pay(cardDetails)
+
+    console.log('response', response);
+    
+
+    // .filter(
+    //   data => this.toastr.success(data, 'Success!'),
+    //   error => this.toastr.error(error, 'Error')
+    // )
+    this.cardDetailsForm.reset()
+    
+    this.router.navigate(['role']);
   }
 
 }
