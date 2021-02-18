@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
+import { PaymentService } from '../../shared/services/payment.service';
+// import { CardPayment } from '../../../../models/card-payment.model';
 
 @Component({
   selector: 'app-inputs',
@@ -8,15 +11,9 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class InputsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private paymentService: PaymentService, private toastr: ToastrService) { }
 
   cardDetailsForm: FormGroup;
-
-  onSubmit() {
-    console.warn(this.cardDetailsForm.value);
-    this.cardDetailsForm.reset()
-
-  }
 
   ngOnInit(): void {
     this.cardDetailsForm = new FormGroup({
@@ -48,6 +45,18 @@ export class InputsComponent implements OnInit {
 
   get securityCode() {
     return this.cardDetailsForm.get('securityCode')
+  }
+
+  onSubmit() {
+    this.paymentService.pay(this.cardDetailsForm.value)
+    .subscribe(
+      data => this.toastr.success(data, 'Success!'),
+      // console.log('Success!', data),
+      error => this.toastr.error(error, 'Error')
+      // console.error('Error!', error)
+    )
+    this.cardDetailsForm.reset()
+
   }
 
 }

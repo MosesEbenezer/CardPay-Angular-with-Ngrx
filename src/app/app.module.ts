@@ -7,7 +7,9 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import {MatDividerModule} from '@angular/material/divider';
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 import { ReactiveFormsModule } from '@angular/forms';
 
@@ -28,7 +30,6 @@ import { CardDetailsComponent } from './components/card-details/card-details.com
     routingComponents,
     CardDetailsComponent
   ],
-  // exports: [ MatFormFieldModule, MatInputModule ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -40,6 +41,9 @@ import { CardDetailsComponent } from './components/card-details/card-details.com
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
     StoreModule.forRoot({ card: CardPaymentReducer })
   ],
   providers: [],
