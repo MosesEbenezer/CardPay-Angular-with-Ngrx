@@ -4,6 +4,8 @@ import { ToastrService } from 'ngx-toastr';
 import { CardPayment } from 'src/app/models/card-payment.model';
 import { PaymentService } from '../../shared/services/payment.service';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+// import { } from '@ngrx/effects';
 
 @Component({
   selector: 'app-inputs',
@@ -21,8 +23,9 @@ export class InputsComponent implements OnInit {
 
       'cardHolder': new FormControl(null, [Validators.required]),
       'cardNumber': new FormControl(null, [Validators.required]),
-      'expirationDate': new FormControl(null, [Validators.required, // Validators.pattern('')
-      ]), // (mandatory, Date, >CurrentDate)
+      'expirationDate': new FormControl(null, [Validators.required, 
+        // Validators.pattern('')
+      ]),
       'securityCode': new FormControl(null, [Validators.minLength(3), Validators.maxLength(3), Validators.pattern('[0-9]+')]),
       'amount': new FormControl(null, [Validators.required, Validators.min(0), Validators.pattern('^[1-9][0-9]*$')]),
     })
@@ -48,26 +51,23 @@ export class InputsComponent implements OnInit {
     return this.cardDetailsForm.get('securityCode')
   }
 
-  onSubmit() {
+  submit(): Observable<any> {
 
     if(!this.cardDetailsForm.valid) {
       return
     }
 
     const cardDetails: CardPayment = this.cardDetailsForm.value
-    
-    const response = this.paymentService.pay(cardDetails)
+    this.paymentService.pay(cardDetails)
 
-    console.log('response', response);
-    
-
-    // .filter(
+    // .subscribe(
     //   data => this.toastr.success(data, 'Success!'),
-    //   error => this.toastr.error(error, 'Error')
+    //   error => this.toastr.error(error, 'Error') && console.error('error', error)
     // )
-    this.cardDetailsForm.reset()
-    
-    this.router.navigate(['role']);
+
+    this.toastr.success('Success!')
+    this.router.navigate(['/']);
+
   }
 
 }

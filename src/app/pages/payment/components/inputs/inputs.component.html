@@ -1,6 +1,6 @@
 <mat-card class="center">
 
-  <form [formGroup]="cardDetailsForm" (ngSubmit)="onSubmit()">
+  <form [formGroup]="cardDetailsForm">
 
     <label class="label-1">
       Name:
@@ -23,7 +23,7 @@
     <label class="label">
       Exp:
       <input class="input-3" type="date" formControlName="expirationDate">
-      <small *ngIf="expirationDate.invalid && expirationDate.touched" class="text-danger">Card Number is required</small> 
+      <small *ngIf="expirationDate.invalid && expirationDate.touched" class="text-danger">Date should be greater than today</small> 
     </label>
     
     <label class="label">
@@ -34,7 +34,7 @@
   
     
     <div class="submit">
-      <button type="submit" [disabled]="!cardDetailsForm.valid" mat-raised-button color="accent">PAY</button>
+      <button (click)="submit()" [disabled]="!cardDetailsForm.valid" mat-raised-button color="accent">PAY</button>
     </div>
   </form>
 

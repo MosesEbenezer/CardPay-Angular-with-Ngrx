@@ -13,16 +13,11 @@ import { Observable } from 'rxjs';
 
 export class PaymentService {
 
-  // constructor(private http: HttpClient) { }
-
-  // pay(card: CardPayment) {
-  //   return this.http.post<any>(this.url, card);
-  // }
-
-  constructor(private store: Store<AppState>) {}
-
+  constructor(private store: Store<AppState>, private http: HttpClient) {}
+  
   pay(card: CardPayment){
     return this.store.dispatch(new PaymentActions.MakePayment(card))
+    // return this.http.post<any>(url, card);
   }
 
 }

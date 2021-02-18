@@ -1,4 +1,5 @@
 export enum CardPaymentActionTypes {
   PAY = 'PAY',
-  // REMOVE = 'REMOVE'
+  // FORM_SUBMIT_SUCCESS = 'FORM_SUBMIT_SUCCESS',
+  // FORM_SUBMIT_ERROR = 'FORM_SUBMIT_ERROR',
 }
